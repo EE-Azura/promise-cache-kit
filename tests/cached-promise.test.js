@@ -23,7 +23,6 @@ jest.mock('../retry', () => ({
           if (!shouldRetry) {
             throw err;
           }
-          // 延迟逻辑由 retryHandler 处理
         }
       }
     };
@@ -43,7 +42,6 @@ describe('createCachedPromise', () => {
     mockRetryHandler = jest.fn();
     consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => { });
 
-    // 重置默认处理器的模拟
     defaultCheckHandler.mockReset();
     defaultRetryHandler.mockReset();
   });
@@ -55,6 +53,7 @@ describe('createCachedPromise', () => {
   });
 
   test('应该在首次调用时执行目标函数并缓存结果', async () => {
+    // should execute the target function and cache the result on the first call
     mockTarget.mockResolvedValue('initial result');
     mockCheckHandler.mockResolvedValue(true);
 
@@ -67,6 +66,7 @@ describe('createCachedPromise', () => {
   });
 
   test('应该在有效缓存时使用缓存值', async () => {
+    // should use cached value when cache is valid
     mockTarget.mockResolvedValue('result');
     mockCheckHandler.mockResolvedValue(true);
 
@@ -80,6 +80,7 @@ describe('createCachedPromise', () => {
   });
 
   test('应该在清除缓存后重新执行目标函数', async () => {
+    // should re-execute the target function after clearing the cache
     mockTarget.mockResolvedValueOnce('result1').mockResolvedValueOnce('result2');
     mockCheckHandler.mockResolvedValue(true);
 
@@ -94,6 +95,7 @@ describe('createCachedPromise', () => {
   });
 
   test('应该在检查处理器返回 false 时重新执行目标函数', async () => {
+    // should re-execute the target function when the check handler returns false
     mockTarget.mockResolvedValueOnce('result1').mockResolvedValueOnce('result2');
     mockCheckHandler.mockResolvedValueOnce(true).mockResolvedValueOnce(false);
 
@@ -108,6 +110,7 @@ describe('createCachedPromise', () => {
   });
 
   test('应该在强制刷新时重新执行目标函数', async () => {
+    // should re-execute the target function when forced to refresh
     mockTarget.mockResolvedValueOnce('result1').mockResolvedValueOnce('result2');
     mockCheckHandler.mockResolvedValue(true);
 
@@ -121,6 +124,7 @@ describe('createCachedPromise', () => {
   });
 
   test('应该在目标函数失败时重试', async () => {
+    // should retry when the target function fails
     const error = new Error('fail');
     mockTarget.mockRejectedValueOnce(error).mockResolvedValueOnce('result');
     mockCheckHandler.mockResolvedValue(false);
@@ -136,6 +140,7 @@ describe('createCachedPromise', () => {
   });
 
   test('应该在重试失败后抛出错误', async () => {
+    // should throw an error after retry fails
     const error = new Error('fail');
     mockTarget.mockRejectedValue(error);
     mockCheckHandler.mockResolvedValue(false);
@@ -151,6 +156,7 @@ describe('createCachedPromise', () => {
   });
 
   test('应该在并发调用时只执行一次目标函数', async () => {
+    // should execute the target function only once during concurrent calls
     mockTarget.mockResolvedValue('result');
     mockCheckHandler.mockResolvedValue(true);
 
@@ -164,6 +170,7 @@ describe('createCachedPromise', () => {
   });
 
   test('应该使用默认的检查处理器', async () => {
+    // should use the default check handler
     mockTarget.mockResolvedValue('result');
     defaultCheckHandler.mockResolvedValue(true);
 
@@ -176,6 +183,7 @@ describe('createCachedPromise', () => {
   });
 
   test('应该使用默认的重试处理器', async () => {
+    // should use the default retry handler
     const error = new Error('fail');
     mockTarget.mockRejectedValueOnce(error).mockResolvedValueOnce('result');
     defaultCheckHandler.mockResolvedValue(false);
@@ -190,6 +198,7 @@ describe('createCachedPromise', () => {
   });
 
   test('不应该在禁用重试时进行重试', async () => {
+    // should not retry when retry is disabled
     const error = new Error('fail');
     mockTarget.mockRejectedValue(error);
     defaultCheckHandler.mockResolvedValue(false);
