@@ -1,4 +1,4 @@
-const { createCachedRequest } = require('../cached-request');
+const { createCachedRequest } = require('../src/cached-request');
 
 describe('createCachedRequest', () => {
   test('在相同参数的情况下应返回缓存的结果', async () => {

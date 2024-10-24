@@ -1,12 +1,12 @@
-const { createCachedPromise } = require('../index');
-const { defaultCheckHandler, defaultRetryHandler } = require('../default');
+const { createCachedPromise } = require('../src/index');
+const { defaultCheckHandler, defaultRetryHandler } = require('../src/default');
 
-jest.mock('../default', () => ({
+jest.mock('../src/default', () => ({
   defaultCheckHandler: jest.fn(),
   defaultRetryHandler: jest.fn()
 }));
 
-jest.mock('../retry', () => ({
+jest.mock('../src/retry', () => ({
   createRetryPromise: jest.fn((target, retryHandler = () => Promise.resolve(false)) => {
     return async function retry() {
       let errorCount = 0;

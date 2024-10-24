@@ -1,4 +1,4 @@
-const { defaultCheckHandler, defaultRetryHandler } = require('../default');
+const { defaultCheckHandler, defaultRetryHandler } = require('../src/default');
 
 describe('defaultCheckHandler', () => {
   test('应该在 prevUpdateTime 不是数字时返回 true', async () => {
