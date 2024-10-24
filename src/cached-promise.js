@@ -2,12 +2,12 @@
  * @author EE_Azura <EE_Azura@outlook.com>
  */
 
-const { createRetryPromise } = require('./retry')
-const { defaultCheckHandler, defaultRetryHandler } = require('./default')
+import { createRetryPromise } from './retry';
+import { defaultCheckHandler, defaultRetryHandler } from './default';
 
 /**
  * 创建一个带缓存的 Promise 函数，可以根据条件判断是否使用缓存的值。
- * 
+ *
  * @param {function(): Promise<*>} target - 目标函数，该函数需要返回一个 Promise 对象
  * @param {CheckHandler} [checkHandler=defaultCheckHandler] - 判断值是否需要更新的回调函数 {@link types.js#CheckHandler}
  * @param {RetryHandler|boolean} [retry=true] - 重试策略配置。 {@link types.js#RetryHandler}
@@ -16,7 +16,7 @@ const { defaultCheckHandler, defaultRetryHandler } = require('./default')
  *        如果是函数，则使用自定义的重试处理函数
  * @returns {CachedPromiseFunction} 返回一个新的 Promise 函数，可以根据 `fresh` 参数决定是否强制刷新缓存
  */
-function createCachedPromise(
+export function createCachedPromise(
   target,
   checkHandler = defaultCheckHandler,
   retry = true
@@ -29,12 +29,17 @@ function createCachedPromise(
 
   const pool = new Set();
 
-  const retryHandler = typeof retry === 'function' ? retry : retry ? defaultRetryHandler : () => false;
+  const retryHandler =
+    typeof retry === 'function'
+      ? retry
+      : retry
+        ? defaultRetryHandler
+        : () => false;
   const retryPromise = createRetryPromise(target, retryHandler);
 
   /**
    * 带缓存的 Promise 函数
-   * 
+   *
    * @async
    * @function CachedPromiseFunction
    * @param {Object} [options] - 调用选项
@@ -53,11 +58,17 @@ function createCachedPromise(
     if (!_isRunning) {
       _isRunning = true;
       try {
-        const shouldRefresh = _fresh || !_hasValidCache || !(await checkHandler({ prevUpdateTime: _updateTime, prevValue: _value }));
+        const shouldRefresh =
+          _fresh ||
+          !_hasValidCache ||
+          !(await checkHandler({
+            prevUpdateTime: _updateTime,
+            prevValue: _value
+          }));
         if (shouldRefresh) {
           _value = await retryPromise();
           _updateTime = Date.now();
-          _hasValidCache = true;  // 标记为已初始化
+          _hasValidCache = true; // 标记为已初始化
         }
         onSuccess();
       } catch (err) {
@@ -115,7 +126,7 @@ function createCachedPromise(
 
   /**
    * 清除当前缓存
-   * 
+   *
    * @function clearCache
    */
   function clearCache() {
@@ -126,7 +137,3 @@ function createCachedPromise(
 
   return Object.assign(cachedPromise, { clearCache });
 }
-
-module.exports = {
-  createCachedPromise
-};

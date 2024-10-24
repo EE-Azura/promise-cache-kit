@@ -1,6 +1,6 @@
 /**
  * 检查处理器函数，用于判断是否需要更新缓存值。
- * 
+ *
  * @async
  * @callback CheckHandler
  * @param {Object} [options] - 检查选项

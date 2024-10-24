@@ -19,17 +19,17 @@
  * @property {number} cacheSize - 当前缓存大小
  */
 
-const { createCachedPromise } = require('./cached-promise')
+import { createCachedPromise } from './cached-promise';
 
 /**
  * 创建一个带缓存的 Promise 函数，可以根据条件判断是否使用缓存的值。
- * 
+ *
  * @template T
  * @param {function(Object): Promise<T>} target - 目标函数，该函数需要返回一个 Promise 对象
  * @param {CachedRequestOptions} [options={}] - 其它配置
  * @returns {Object} 返回一个对象，包含带缓存的请求函数及辅助方法
  */
-function createCachedRequest(target, options = {}) {
+export function createCachedRequest(target, options = {}) {
   const {
     max = Infinity,
     cacheKeyGenerator = JSON.stringify,
@@ -84,7 +84,7 @@ function createCachedRequest(target, options = {}) {
 
   /**
    * 获取缓存统计
-   * 
+   *
    * @returns {CachedRequestStats} 缓存统计信息
    */
   function getStats() {
@@ -112,7 +112,3 @@ function createCachedRequest(target, options = {}) {
     clearCache
   });
 }
-
-module.exports = {
-  createCachedRequest
-};

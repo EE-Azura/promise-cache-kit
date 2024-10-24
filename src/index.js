@@ -2,12 +2,10 @@
  * @author EE_Azura <EE_Azura@outlook.com>
  */
 
-const { createCachedPromise } = require('./cached-promise')
-const { createCachedRequest } = require('./cached-request')
+import { createCachedPromise } from './cached-promise';
+import { createCachedRequest } from './cached-request';
 
-
-module.exports = {
+export {
   createCachedPromise,
   createCachedRequest
-}
-
+};

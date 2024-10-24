@@ -1,10 +1,11 @@
-const { createCachedRequest } = require('../src/cached-request');
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { createCachedRequest } from '@/cached-request';
 
 describe('createCachedRequest', () => {
-  test('在相同参数的情况下应返回缓存的结果', async () => {
+  it('在相同参数的情况下应返回缓存的结果', async () => {
     // should return a cached result on subsequent calls with the same parameters
     let callCount = 0;
-    const target = async (params) => {
+    const target = async params => {
       callCount++;
       return params.value;
     };
@@ -19,10 +20,10 @@ describe('createCachedRequest', () => {
     expect(callCount).toBe(1);
   });
 
-  test('如果缓存已过期，则不应返回缓存的结果', async () => {
+  it('如果缓存已过期，则不应返回缓存的结果', async () => {
     // should not return a cached result if the cache has expired
     let callCount = 0;
-    const target = async (params) => {
+    const target = async params => {
       callCount++;
       return params.value;
     };
@@ -38,10 +39,10 @@ describe('createCachedRequest', () => {
     expect(callCount).toBe(2);
   });
 
-  test('调用 clearCache 时应清除缓存', async () => {
+  it('调用 clearCache 时应清除缓存', async () => {
     // should clear the cache when clearCache is called
     let callCount = 0;
-    const target = async (params) => {
+    const target = async params => {
       callCount++;
       return params.value;
     };
@@ -57,9 +58,9 @@ describe('createCachedRequest', () => {
     expect(callCount).toBe(2);
   });
 
-  test('应返回正确的缓存统计信息', async () => {
+  it('应返回正确的缓存统计信息', async () => {
     // should return correct cache statistics
-    const target = async (params) => params.value;
+    const target = async params => params.value;
 
     const cachedRequest = createCachedRequest(target, { ttl: 1000 });
 
