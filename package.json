@@ -17,11 +17,11 @@
     "url": "git+https://github.com/EE-Azura/promise-cache-kit.git"
   },
   "keywords": [
+    "nodejs",
+    "javascript",
     "promise",
     "cache",
-    "utility",
-    "commonjs",
-    "esm"
+    "async"
   ],
   "author": "EE_Azura",
   "license": "Mozilla Public License Version 2.0",
