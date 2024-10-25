@@ -12,11 +12,11 @@
  * @returns {Promise<boolean>} 如果返回 true，则使用缓存值；如果返回 false，则获取新值
  */
 export async function defaultCheckHandler({ prevUpdateTime } = {}) {
-  // 默认冷却时间（毫秒）
-  const DEFAULT_COOLDOWN = 60000;
+  // 缓存有效时间时间（毫秒）
+  const TTL = 60000;
 
   if (typeof prevUpdateTime !== 'number') return true;
-  return Date.now() - prevUpdateTime < DEFAULT_COOLDOWN;
+  return Date.now() - prevUpdateTime < TTL;
 }
 
 /**

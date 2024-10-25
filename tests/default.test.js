@@ -22,7 +22,7 @@ describe('defaultCheckHandler', () => {
 
   it('应该在冷却时间外返回 false', async () => {
     // should return false when outside cooldown period
-    const prevUpdateTime = Date.now() - 4000; // 4 seconds ago
+    const prevUpdateTime = Date.now() - 61000; // 4 seconds ago
     const result = await defaultCheckHandler({ prevUpdateTime });
     expect(result).toBe(false);
   });
