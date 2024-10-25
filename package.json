@@ -39,5 +39,8 @@
   },
   "dependencies": {
     "globals": "^15.11.0"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.24.0"
   }
 }
