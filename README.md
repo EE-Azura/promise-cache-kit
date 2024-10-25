@@ -92,11 +92,11 @@ const cachedRequest = createCachedRequest(target, { ttl: 1000 });
 
 #### `createCachedPromise(target, checkHandler, retry)`
 
-| 参数           | 类型                       | 默认值                                  | 描述                                                                    |
-| -------------- | -------------------------- | --------------------------------------- | ----------------------------------------------------------------------- |
-| `target`       | Function                   | 无                                      | 需要缓存的异步函数                                                      |
-| `checkHandler` | Function (可选)            | [`defaultCheckHandler`](src/default.js) | 判断值是否需要更新的回调函数 `({ prevUpdateTime, prevValue }) => {}`    |
-| `retry`        | Function \| boolean (可选) | `true`                                  | 重试策略配置。`true` 使用默认重试策略，`false` 不启用重试，或自定义函数 |
+| 参数           | 类型                       | 默认值                                  | 描述                                                                                      |
+| -------------- | -------------------------- | --------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `target`       | Function                   | 无                                      | 需要缓存的异步函数                                                                        |
+| `checkHandler` | Function (可选)            | [`defaultCheckHandler`](src/default.js) | 判断值是否需要更新的回调函数 `({ prevUpdateTime, prevValue }) => {}`                      |
+| `retry`        | Function \| boolean (可选) | `true`                                  | 重试策略配置。`true` 使用[默认重试策略](src/default.js)，`false` 不启用重试，或自定义函数 |
 
 返回一个带缓存功能的 Promise 函数，并附带一个 `clearCache` 方法。
 
