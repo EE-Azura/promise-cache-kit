@@ -25,13 +25,13 @@ export default [
       quotes: ['error', 'single'],
       semi: ['error', 'always'],
       camelcase: ['error', { properties: 'always' }],
-      'no-magic-numbers': ['warn', { ignore: [0, 1] }],
+      'no-magic-numbers': ['warn', { ignore: [0, 1, 10] }],
       'prefer-arrow-callback': ['error'],
       'prefer-template': ['error'],
       'no-var': ['error'],
       'prefer-const': ['error'],
       'no-unused-vars': ['warn'],
-      'no-console': ['warn'],
+      'no-console': ['error', { allow: ['warn', 'error'] }],
       'prettier/prettier': [
         'error',
         {

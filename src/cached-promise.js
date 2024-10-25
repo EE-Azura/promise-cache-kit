@@ -109,7 +109,6 @@ export function createCachedPromise(
   }
 
   function onSuccess() {
-    console.log('onSuccess called, current value:', _value);
     for (const { resolve } of pool) {
       resolve(_value);
     }
@@ -117,7 +116,6 @@ export function createCachedPromise(
   }
 
   function onFail(err) {
-    console.log('onFail called with error:', err);
     for (const { reject } of pool) {
       reject(err);
     }
