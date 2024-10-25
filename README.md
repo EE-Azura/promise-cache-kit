@@ -79,9 +79,9 @@ const cachedRequest = createCachedRequest(target, { ttl: 1000 });
   console.log(callCount); // 输出: 2
 
   cachedRequest.clearCache();
-  const result3 = await cachedRequest({ value: 42 });
+  const result4 = await cachedRequest({ value: 42 });
 
-  console.log(result3); // 输出: 42
+  console.log(result4); // 输出: 42
   console.log(callCount); // 输出: 3
 })();
 ```
