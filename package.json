@@ -1,7 +1,7 @@
 {
   "name": "promise-cache-kit",
-  "version": "0.1.0",
-  "description": "",
+  "version": "1.0.0",
+  "description": "A utility library for caching Promise results, supporting both CommonJS and ES modules.",
   "type": "module",
   "main": "dist/promise-cache-kit.js",
   "commonjs": "dist/promise-cache-kit.cjs",
@@ -16,6 +16,13 @@
     "type": "git",
     "url": "git+https://github.com/EE-Azura/promise-cache-kit.git"
   },
+  "keywords": [
+    "promise",
+    "cache",
+    "utility",
+    "commonjs",
+    "esm"
+  ],
   "author": "EE_Azura",
   "license": "Mozilla Public License Version 2.0",
   "bugs": {
