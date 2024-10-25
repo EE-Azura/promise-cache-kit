@@ -1,1 +1,1 @@
-# cached-promise
+# promise-cache-kit

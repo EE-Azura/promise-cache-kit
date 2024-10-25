@@ -1,12 +1,12 @@
 import { describe, it, expect } from 'vitest';
-import { createCachedPromise as esmCreateCachedPromise } from '../dist/cached-promise.js';
+import { createCachedPromise as esmCreateCachedPromise } from '../dist/promise-cache-kit.js';
 
 
 describe('兼容性测试', () => {
   it('应该在 CommonJS 环境中正常工作', async () => {
     const {
       createCachedPromise: cjsCreateCachedPromise
-    } = require('../dist/cached-promise.cjs');
+    } = require('../dist/promise-cache-kit.cjs');
     let callCount = 0;
     const target = async () => {
       callCount++;

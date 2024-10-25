@@ -5,16 +5,10 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.js'),
-      name: 'CachedPromise',
+      name: 'PromiseCacheKit',
       formats: ['es', 'cjs'],
-      fileName: format => format === 'es' ? 'cached-promise.js' : 'cached-promise.cjs'
+      fileName: format => format === 'es' ? 'promise-cache-kit.js' : 'promise-cache-kit.cjs'
     },
-    rollupOptions: {
-      external: [], // 在这里添加你不想打包进库的依赖
-      output: {
-        globals: {} // 在这里添加全局变量名称映射
-      }
-    }
   },
   test: {
     globals: true,

@@ -1,27 +1,27 @@
 {
-  "name": "cached-promise",
+  "name": "promise-cache-kit",
   "version": "0.1.0",
   "description": "",
   "type": "module",
-  "main": "dist/cached-promise.js",
-  "commonjs": "dist/cached-promise.cjs",
+  "main": "dist/promise-cache-kit.js",
+  "commonjs": "dist/promise-cache-kit.cjs",
   "scripts": {
     "build": "vite build",
-    "test": "vitest",
+    "test": "npm run build && vitest",
     "test:compat": "npm run build && vitest run compat-tests",
     "lint": "eslint \"src/**/*.js\"",
     "format": "prettier --write ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EE-Azura/cached-promise.git"
+    "url": "git+https://github.com/EE-Azura/promise-cache-kit.git"
   },
   "author": "EE_Azura",
   "license": "Mozilla Public License Version 2.0",
   "bugs": {
-    "url": "https://github.com/EE-Azura/cached-promise/issues"
+    "url": "https://github.com/EE-Azura/promise-cache-kit/issues"
   },
-  "homepage": "https://github.com/EE-Azura/cached-promise#readme",
+  "homepage": "https://github.com/EE-Azura/promise-cache-kit#readme",
   "devDependencies": {
     "vite": "^5.4.10",
     "vitest": "^2.1.3",
