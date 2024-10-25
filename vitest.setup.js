@@ -8,24 +8,26 @@ vi.mock('@/default', () => ({
 
 // Mock createRetryPromise
 vi.mock('@/retry', () => ({
-  createRetryPromise: vi.fn((target, retryHandler = () => Promise.resolve(false)) => {
-    return async function retry() {
-      let errorCount = 0;
-      let delay = 0;
+  createRetryPromise: vi.fn(
+    (target, retryHandler = () => Promise.resolve(false)) => {
+      return async function retry() {
+        let errorCount = 0;
+        let delay = 0;
 
-      while (true) {
-        try {
-          return await target();
-        } catch (err) {
-          errorCount++;
-          console.error(err);
+        while (true) {
+          try {
+            return await target();
+          } catch (err) {
+            errorCount++;
+            console.error(err);
 
-          const shouldRetry = await retryHandler({ errorCount, delay });
-          if (!shouldRetry) {
-            throw err;
+            const shouldRetry = await retryHandler({ errorCount, delay });
+            if (!shouldRetry) {
+              throw err;
+            }
           }
         }
-      }
-    };
-  })
+      };
+    }
+  )
 }));

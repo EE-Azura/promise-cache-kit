@@ -1,7 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { createCachedPromise as esmCreateCachedPromise } from '../dist/promise-cache-kit.js';
 
-
 describe('兼容性测试', () => {
   it('应该在 CommonJS 环境中正常工作', async () => {
     const {

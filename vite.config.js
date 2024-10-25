@@ -7,8 +7,9 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/index.js'),
       name: 'PromiseCacheKit',
       formats: ['es', 'cjs'],
-      fileName: format => format === 'es' ? 'promise-cache-kit.js' : 'promise-cache-kit.cjs'
-    },
+      fileName: format =>
+        format === 'es' ? 'promise-cache-kit.js' : 'promise-cache-kit.cjs'
+    }
   },
   test: {
     globals: true,

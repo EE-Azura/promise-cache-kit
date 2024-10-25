@@ -5,7 +5,4 @@
 import { createCachedPromise } from './cached-promise';
 import { createCachedRequest } from './cached-request';
 
-export {
-  createCachedPromise,
-  createCachedRequest
-};
+export { createCachedPromise, createCachedRequest };

@@ -17,16 +17,14 @@ export async function defaultCheckHandler({ prevUpdateTime } = {}) {
 
   if (typeof prevUpdateTime !== 'number') return true;
   return Date.now() - prevUpdateTime < DEFAULT_COOLDOWN;
-};
+}
 
 /**
  * 默认重试处理器：根据错误次数增加延迟时间，最多重试 3 次。
  *
  * @async
- * @callback RetryHandler
  * @param {Object} [options] - 重试选项
  * @param {number} options.errorCount - 当前失败次数
- * @param {number} options.delay - 上次重试的延迟时间（毫秒）
  * @returns {Promise<boolean>} 如果返回 true，则继续重试；如果返回 false，则停止重试
  */
 export async function defaultRetryHandler({ errorCount = 0 } = {}) {

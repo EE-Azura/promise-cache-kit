@@ -13,7 +13,7 @@ describe('createCachedPromise', () => {
     mockTarget = vi.fn();
     mockCheckHandler = vi.fn();
     mockRetryHandler = vi.fn();
-    consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => { });
+    consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
   });
 
   afterEach(() => {

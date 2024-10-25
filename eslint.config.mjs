@@ -1,4 +1,5 @@
 import js from '@eslint/js';
+import globals from 'globals';
 import { FlatCompat } from '@eslint/eslintrc';
 
 const compat = new FlatCompat({
@@ -9,10 +10,14 @@ const compat = new FlatCompat({
 export default [
   ...compat.extends('eslint:recommended', 'plugin:prettier/recommended'),
   {
-    env: {
-      browser: true,
-      node: true,
-      es2021: true
+    files: ['**/*.js'],
+    languageOptions: {
+      ecmaVersion: 2021,
+      sourceType: 'module',
+      globals: {
+        ...globals.node,
+        ...globals.browser
+      }
     },
     rules: {
       indent: ['error', 2],

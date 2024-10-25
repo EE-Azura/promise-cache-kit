@@ -11,7 +11,6 @@ export function createRetryPromise(
 ) {
   return async function retry() {
     let errorCount = 0;
-    let delay = 0;
 
     while (true) {
       try {
@@ -21,7 +20,7 @@ export function createRetryPromise(
         errorCount++;
         console.error(err);
 
-        const shouldRetry = await retryHandler({ errorCount, delay });
+        const shouldRetry = await retryHandler({ errorCount });
         if (!shouldRetry) {
           throw err;
         }
