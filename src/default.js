@@ -13,7 +13,7 @@
  */
 export async function defaultCheckHandler({ prevUpdateTime } = {}) {
   // 默认冷却时间（毫秒）
-  const DEFAULT_COOLDOWN = 3000;
+  const DEFAULT_COOLDOWN = 60000;
 
   if (typeof prevUpdateTime !== 'number') return true;
   return Date.now() - prevUpdateTime < DEFAULT_COOLDOWN;
