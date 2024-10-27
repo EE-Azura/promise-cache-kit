@@ -104,10 +104,10 @@ Returns a Promise function with caching capabilities, along with a `clearCache` 
 
 #### `cachedPromise(options)`
 
-| Parameter | Type    | Default | Description                        |
-| --------- | ------- | ------- | ---------------------------------- |
-| `options` | Object  | None    | Call options                       |
-| `fresh`   | boolean | `false` | Whether to force refresh the cache |
+| Parameter       | Type    | Default | Description                        |
+| --------------- | ------- | ------- | ---------------------------------- |
+| `options`       | Object  | None    | Call options                       |
+| `options.fresh` | boolean | `false` | Whether to force refresh the cache |
 
 Returns the result of the target function.
 
@@ -132,11 +132,11 @@ Returns a request function with caching capabilities, along with a `clearCache` 
 
 #### `cachedRequest(params, options)`
 
-| Parameter | Type    | Default | Description                          |
-| --------- | ------- | ------- | ------------------------------------ |
-| `params`  | Object  | None    | Call parameters (passed to `target`) |
-| `options` | Object  | None    | Call options                         |
-| `fresh`   | boolean | `false` | Whether to force refresh the cache   |
+| Parameter       | Type    | Default | Description                          |
+| --------------- | ------- | ------- | ------------------------------------ |
+| `params`        | Object  | None    | Call parameters (passed to `target`) |
+| `options`       | Object  | None    | Call options                         |
+| `options.fresh` | boolean | `false` | Whether to force refresh the cache   |
 
 Returns the result of the target function.
 

@@ -104,10 +104,10 @@ const cachedRequest = createCachedRequest(target, { ttl: 1000 });
 
 #### `cachedPromise(options)`
 
-| 参数      | 类型    | 默认值  | 描述             |
-| --------- | ------- | ------- | ---------------- |
-| `options` | Object  | 无      | 调用选项         |
-| `fresh`   | boolean | `false` | 是否强制刷新缓存 |
+| 参数            | 类型    | 默认值  | 描述             |
+| --------------- | ------- | ------- | ---------------- |
+| `options`       | Object  | 无      | 调用选项         |
+| `options.fresh` | boolean | `false` | 是否强制刷新缓存 |
 
 返回目标函数的结果。
 
@@ -132,11 +132,11 @@ const cachedRequest = createCachedRequest(target, { ttl: 1000 });
 
 #### `cachedRequest(params, options)`
 
-| 参数      | 类型    | 默认值  | 描述                        |
-| --------- | ------- | ------- | --------------------------- |
-| `params`  | Object  | 无      | 调用参数（传递给 `target`） |
-| `options` | Object  | 无      | 调用选项                    |
-| `fresh`   | boolean | `false` | 是否强制刷新缓存            |
+| 参数            | 类型    | 默认值  | 描述                        |
+| --------------- | ------- | ------- | --------------------------- |
+| `params`        | Object  | 无      | 调用参数（传递给 `target`） |
+| `options`       | Object  | 无      | 调用选项                    |
+| `options.fresh` | boolean | `false` | 是否强制刷新缓存            |
 
 返回目标函数的结果。
 
