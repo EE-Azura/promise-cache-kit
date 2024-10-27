@@ -1,3 +1,5 @@
+简体中文 | [English](./README_en.md)
+
 # promise-cache-kit
 
 `promise-cache-kit` 是一个用于缓存 Promise 结果的实用工具库，支持 CommonJS 和 ES 模块。它提供了两个主要功能：
